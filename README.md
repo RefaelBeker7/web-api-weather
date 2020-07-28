@@ -9,8 +9,8 @@
 
 Weather application use a number of open source projects and tools to work properly:
 
-* [NodeJS] - Using callback, dynamic pages (hbs), error handling.
-* [HTTP Request] - Customizing http requests with json http endpoint.
+* [NodeJS] - using callback, dynamic pages (hbs), error handling.
+* [HTTP Request] - customizing http requests with json http endpoint.
 * [Web-site] - we use weatherstack.com API.
 
 
