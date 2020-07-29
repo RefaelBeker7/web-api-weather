@@ -1,11 +1,10 @@
-// we use nodemon for every change-save it will restart the sever 
 const hbs = require('hbs')
 const path = require('path')
 const express = require('express')
 const forecast = require('./utils/forecast')
-// nodemon src/app.js -e js,hbs
+
 const app = express()
-//console.log(__dirname)
+const port = process.env.PORT || 3000
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -21,7 +20,6 @@ hbs.registerPartials(partialsPath)
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
 
-// -- using hbs --
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather App',
@@ -36,10 +34,6 @@ app.get('/about', (req, res) => {
     })
 })
 
-// !! No need we are use the express static!!
-// app.get('', (req, res) => {
-//     res.send('<h1>Weather App</h1>')
-// })
 app.get('/help', (req, res) => {
     res.render('help', {
         helpTest: 'This is some helpful text.',
@@ -53,7 +47,7 @@ app.get('/weather', (req, res) => {
         res.send({
             error: 'Address must be provided.'
         })
-    }   //http://localhost:3000/weather?search=jerusalem
+    }
     forecast(req.query.search, (error, forecastData = {}) => {
         if (error) {
             return res.send({ error })
@@ -95,6 +89,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log('Server is up on port ' + port)
 })
