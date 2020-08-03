@@ -11,15 +11,17 @@ const forecast = (address, callback) => {
             callback('Unable to find location, try another location.', undefined)
         } else {
             callback(undefined, printforecastData(body.location.name, body.location.country,
-                                body.current.temperature, body.current.weather_descriptions)
+                                body.current.temperature, body.current.weather_descriptions,
+                                body.current.humidity, body.current.feelslike)
             )
         }
     })
 }
 
-const printforecastData = (name, country, temperature, weather_descriptions) => {
+const printforecastData = (name, country, temperature, weather_descriptions, humidity, feelslike) => {
     return (name+ ", " + country + ". It's currentlly " + 
-        temperature + "℃ degress out. The weather description: " + weather_descriptions)
+        temperature + "℃ degress out with " + humidity + "% humidity, feels like " 
+        + feelslike + ". The weather description: " + weather_descriptions)
 }
 
 
