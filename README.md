@@ -23,4 +23,3 @@ Node Js Weather App is open-sourced software.
 https://mead-web-weather-application.herokuapp.com/
 
 
-[![forthebadge](https://forthebadge.com/images/badges/powered-by-water.svg)](https://forthebadge.com)
